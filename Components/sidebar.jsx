@@ -1,6 +1,7 @@
 'use client'
-
-import React, { ReactNode } from 'react'
+import logo from '../public/logo1.jpg'
+import React, { ReactNode } from 'react';
+import Search from './search';
 import {
   IconButton,
   Box,
@@ -14,6 +15,7 @@ import {
   useDisclosure,
   BoxProps,
   FlexProps,
+  VStack,
 } from '@chakra-ui/react'
 import {
   FiHome,
@@ -33,11 +35,11 @@ const LinkItems = [
   { name: 'Analytics', icon: FiCompass },
 ]
 const LinkItems2 = [
-    { name: 'Profile', icon: FiHome },
-    { name: 'Analytics', icon: FiCompass },
+    { name: 'Settings', icon: FiHome },
+    { name: 'Account', icon: FiCompass },
   ]
 
-export default function SimpleSidebar() {
+export default function SimpleSidebar({children}) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
@@ -55,9 +57,13 @@ export default function SimpleSidebar() {
       </Drawer>
       {/* mobilenav */}
       <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
+      <VStack ml={{ base: 0, md: 60 }} p="4" alignItems={'flex-start'}>
         {/* Content */}
-      </Box>
+        <Search />
+        <VStack>
+          {children}
+        </VStack>
+      </VStack>
     </Box>
   )
 }
@@ -73,25 +79,29 @@ const SidebarContent = ({ onClose, ...rest }) => {
       pos="fixed"
       h="full"
       {...rest}>
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+      <Flex h="40" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
+          <img src={logo} alt="" />
         </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
 
-      <Text color={'green'} mx={'8'} fontStyle={600}>General</Text>
+      <Text color={'green'} mx={'8'}  fontStyle={600}>General</Text>
       {LinkItems.map((link) => (
         <NavItem key={link.name} icon={link.icon}>
           {link.name}
         </NavItem>
       ))}
-      <Text color={'green'} mx={'8'} fontStyle={600}>General</Text>
+
+      <Box my={'280'}>
+      <Text color={'green'} mx={'8'} fontStyle={600}>Settings and Account</Text>
       {LinkItems2.map((link) => (
         <NavItem key={link.name} icon={link.icon}>
           {link.name}
         </NavItem>
       ))}
+      </Box>
+     
     </Box>
   )
 }

@@ -1,13 +1,14 @@
 import React from 'react'
 import './page.css'
-// import logo1 from '../public/pom.png'
 import SideBar from "../Components/sidebar"; 
+import Search from "../Components/search";
+
 
 const page = () => {
   return (
-    <main>
-      <SideBar />
+    <main class='flex'>
     </main>
+
   )
 }
 
