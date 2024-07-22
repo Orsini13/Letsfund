@@ -16,9 +16,9 @@ function Analytics() {
     image: "",
   });
 
-  const handleFormFieldChange =(fieldName, e) =>{
-    setForm({...form, [fieldName]: e.target.value })
-  }
+  const handleFormFieldChange = (fieldName, e) => {
+    setForm({ ...form, [fieldName]: e.target.value });
+  };
   const handleSubmit=()=>{
 
   }
@@ -48,14 +48,14 @@ function Analytics() {
             placeholder="John Doe"
             inputType="text"
             value={form.name}
-            handleChange={() => {}}
+            handleChange={(e) => handleFormFieldChange("name", e)}
           />
           <FormField
             labelName="Campaign Title"
             placeholder="Ode, Write a title"
             inputType="text"
             value={form.title}
-            handleChange={() => {}}
+            handleChange={() => handleFormFieldChange("title", e)}
           />
         </div>
 
@@ -64,7 +64,7 @@ function Analytics() {
           placeholder="Write your story"
           isTextArea
           value={form.description}
-          handleChange={() => {}}
+          handleChange={() => handleFormFieldChange("description", e)}
         />
         <div class="afterform">
           <FormField
@@ -72,21 +72,18 @@ function Analytics() {
             placeholder="ETH0.58"
             inputType="text"
             value={form.target}
-            handleChange={() => {}}
+            handleChange={() => handleFormFieldChange("target", e)}
           />
           <FormField
             labelName="End Date"
             placeholder="End Date"
-            inputType="date" 
+            inputType="date"
             value={form.deadline}
             handleChange={() => {}}
           />
           <div>
-            <button
-            type="submit"
-            title="Submit new campaign"
-            class="btn">
-                Submit
+            <button type="submit" title="Submit new campaign" class="btn">
+              Submit
             </button>
           </div>
         </div>
