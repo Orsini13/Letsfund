@@ -14,3 +14,5 @@ export default function RootLayout({ children }) {
     </html>
   )
 }
+
+export{ default as FormField } from '../Components/FormField';
