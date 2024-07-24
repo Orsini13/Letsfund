@@ -1,8 +1,7 @@
-"use client"
+"use client";
 import React, { useState } from "react";
-import './page.css'
-import FormField from '../../Components/FormField'
-
+import "./page.css";
+import FormField from "../../Components/FormField";
 
 function Analytics() {
   // const navigate = useNavigate();
@@ -19,30 +18,23 @@ function Analytics() {
   const handleFormFieldChange = (fieldName, e) => {
     setForm({ ...form, [fieldName]: e.target.value });
   };
-  const handleSubmit=()=>{
-
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(form);
+  };
 
   return (
-    <div
-      class="black"
-      className="bg-[#1c1c24] flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4"
-    >
+    <div className="black">
       {/* {isLoading && 'Loader'} */}
-      <div
-        class="black2"
-        className="flex justify-center items-center p-[16px] sm:min-w-[380px] bg-[#3a3a43] rounded-[10px]"
-      >
-        <h1 className="font-epilogue font-bold sm:text-[25px] text-[18px] leading-[38px] text-white">
+
+      <div className="black2">
+        <h1>
           <b>Start a campaign</b>
         </h1>
       </div>
 
-      <form
-        onSubmit={handleSubmit}
-        className="w-full mt-[65px] flex flex-col gap-[30px]"
-      >
-        <div class="afterform">
+      <form onSubmit={handleSubmit}>
+        <div className="afterform">
           <FormField
             labelName="Your Name"
             placeholder="John Doe"
@@ -52,10 +44,10 @@ function Analytics() {
           />
           <FormField
             labelName="Campaign Title"
-            placeholder="Ode, Write a title"
+            placeholder="Write a title"
             inputType="text"
             value={form.title}
-            handleChange={() => handleFormFieldChange("title", e)}
+            handleChange={(e) => handleFormFieldChange("title", e)}
           />
         </div>
 
@@ -64,28 +56,35 @@ function Analytics() {
           placeholder="Write your story"
           isTextArea
           value={form.description}
-          handleChange={() => handleFormFieldChange("description", e)}
+          handleChange={(e) => handleFormFieldChange("description", e)}
         />
-        <div class="afterform">
+        <div className="afterform">
           <FormField
             labelName="Goal *"
             placeholder="ETH0.58"
             inputType="text"
             value={form.target}
-            handleChange={() => handleFormFieldChange("target", e)}
+            handleChange={(e) => handleFormFieldChange("target", e)}
           />
           <FormField
             labelName="End Date"
             placeholder="End Date"
             inputType="date"
             value={form.deadline}
-            handleChange={() => {}}
+            handleChange={(e) => handleFormFieldChange("deadline", e)}
           />
-          <div>
-            <button type="submit" title="Submit new campaign" class="btn">
-              Submit
-            </button>
-          </div>
+        </div>
+        <FormField
+          labelName="Campaign image *"
+          placeholder="Place image URL of your campaign"
+          inputType="url"
+          value={form.image}
+          handleChange={(e) => handleFormFieldChange("image", e)}
+        />
+        <div>
+          <button type="submit" title="Submit new campaign" className="btn">
+            Submit
+          </button>
         </div>
       </form>
     </div>

@@ -27,12 +27,13 @@ import {
 } from 'react-icons/fi'
 import { IconType } from 'react-icons'
 import { ReactText } from 'react'
+import Link from 'next/link';
 
 
 const LinkItems = [
   { name: 'Profile', icon: FiHome },
   { name: 'Campaigns', icon: FiTrendingUp },
-  { name: 'Analytics', icon: FiCompass },
+  { name: 'Analytics', icon: FiCompass}, 
 ]
 const LinkItems2 = [
     { name: 'Settings', icon: FiHome },

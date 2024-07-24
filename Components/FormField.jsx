@@ -2,10 +2,10 @@ import React from 'react'
 import './FormField.css'
 const FormField = ({labelName, placeholder, inputType, isTextArea, value, handleChange}) => {
   return (
-    <label class='label'>
+    <label className='label'>
         {
           labelName && (
-            <span class='span'>{labelName}</span>
+            <span className='span'>{labelName}</span>
           )
         }
         {isTextArea ?(
@@ -14,7 +14,7 @@ const FormField = ({labelName, placeholder, inputType, isTextArea, value, handle
           onChange={handleChange}
           rows="10"
           placeholder={placeholder}
-          class='area'
+          className='area'
           />
         ): (
           <input required
@@ -23,7 +23,7 @@ const FormField = ({labelName, placeholder, inputType, isTextArea, value, handle
           type={inputType}
           step="0.1"
           placeholder={placeholder}
-          class='area'
+          className='area'
           />
         )}
     </label>
