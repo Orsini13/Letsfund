@@ -23,6 +23,7 @@ import {
 } from 'react-icons/fi'
 import { TbBrandGoogleAnalytics } from 'react-icons/tb';
 import { MdAccountCircle } from 'react-icons/md';
+import { useRouter } from 'next/navigation';
 
 
 const LinkItems = [
@@ -117,6 +118,8 @@ const NavItem = ({ icon, children, ...rest }) => {
         borderRadius="lg"
         role="group"
         cursor="pointer"
+        bg={currentRoute === children.toLowerCase() && 'green.400'}
+        color={currentRoute === children.toLowerCase() && 'white'}
         _hover={{
           bg: 'green.400',
           color: 'white',
@@ -140,6 +143,8 @@ const NavItem = ({ icon, children, ...rest }) => {
 
 
 const MobileNav = ({ onOpen, ...rest }) => {
+  const router = useRouter();
+  const currentRoute = router.pathname;
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
