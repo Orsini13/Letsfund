@@ -118,8 +118,8 @@ const NavItem = ({ icon, children, ...rest }) => {
         borderRadius="lg"
         role="group"
         cursor="pointer"
-        bg={currentRoute === children.toLowerCase() && 'green.400'}
-        color={currentRoute === children.toLowerCase() && 'white'}
+        // bg={currentRoute === children.toLowerCase() && 'green.400'}
+        // color={currentRoute === children.toLowerCase() && 'white'}
         _hover={{
           bg: 'green.400',
           color: 'white',
