@@ -5,10 +5,11 @@ import { FiPlus } from 'react-icons/fi';
 import { GiLighthouse } from 'react-icons/gi';
 import CampaignsCard  from "../../Components/campaignsCard";
 import FormModal from "../../Components/formModal";
+import {useCampaign} from "../../Hooks/useCampaign";
 
 function Campaign() {
-    const [hasContent, setHasContent] = React.useState(false);
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const {campaigns, addCampaign} = useCampaign();
 
   return (
     <Box width={'100%'}>
@@ -21,22 +22,15 @@ function Campaign() {
             Create Campaign
           </Button>
         </HStack>
-       {hasContent ? <VStack w={'100%'} height={'70vh'} alignContent={'center'} justifyContent={'center'}>
+       {campaigns.length < 1 ? <VStack w={'100%'} height={'70vh'} alignContent={'center'} justifyContent={'center'}>
           <Icon as={GiLighthouse} fontSize={[300,500]} color={'green.900'}/>
           <Text fontWeight={700} color={'green.900'}>OOPS!!</Text>
           <Text fontWeight={700}>You Don&apos;t Have Any Recent Campaigns </Text>
         </VStack>:
         <HStack alignContent={'center'} wrap={'wrap'} py={'20px'} gap={'20px'}>
-          <CampaignsCard />
-          <CampaignsCard />
-          <CampaignsCard />
-          <CampaignsCard />
-          <CampaignsCard />
-          <CampaignsCard />
-          <CampaignsCard />
-          <CampaignsCard />
+          {campaigns.map((campaign, index) => <CampaignsCard key={index} campaign={campaign} />)}
         </HStack>}
-        <FormModal isOpen={isOpen} onClose={onClose} />
+        <FormModal isOpen={isOpen} onClose={onClose} addCampaign={addCampaign}/>
     </Box>
   )
 }

@@ -2,7 +2,7 @@ import { Button, HStack, Icon, Text, VStack} from '@chakra-ui/react';
 import Image  from 'next/image';
 import React from 'react'
 
-function CampaignsCard() {
+function CampaignsCard({campaign}) {
   return (
     <VStack rounded={'lg'} bg={'white'} gap={'10px'} pb={'20px'} boxShadow={'lg'}>
         <Image src={'/Bearport.jpg'} alt='Campaign Image' width={300} height={150} objectFit='cover' style={{borderTopLeftRadius: '10px', borderTopRightRadius: '10px'}}/>
