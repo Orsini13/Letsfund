@@ -1,5 +1,6 @@
 import { Button, FormControl, FormLabel, HStack, Input, InputGroup, InputLeftAddon, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Textarea } from '@chakra-ui/react';
 import React from 'react'
+import ResponseModal from './responseModal';
 
 function FormModal({isOpen, onClose, addCampaign}) {
     const initialRef = React.useRef(null);
@@ -20,6 +21,14 @@ function FormModal({isOpen, onClose, addCampaign}) {
 
     const handleSubmit = () => {
         addCampaign(formValue);
+        setFormValue({
+          title: '',
+          image: '',
+          description: '',
+          goal: '',
+          start: '',
+          end: ''
+        });
     }
     const isDateError = new Date(formValue.end) <= new Date(formValue.start);
 
@@ -71,9 +80,7 @@ function FormModal({isOpen, onClose, addCampaign}) {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='green' mr={3} onClick={handleSubmit}>
-              Save
-            </Button>
+            <ResponseModal handleClick={handleSubmit} buttonLabel={"Save"} title={'success'} description={'Campaign Successfully Added'}/>
             <Button onClick={onClose}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
