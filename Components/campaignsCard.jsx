@@ -1,6 +1,8 @@
 import { Button, HStack, Icon, Text, VStack} from '@chakra-ui/react';
 import Image  from 'next/image';
 import React from 'react'
+import { CiCircleCheck, CiClock2 } from 'react-icons/ci';
+import { MdOutlineCancel } from 'react-icons/md';
 
 function CampaignsCard({campaign}) {
   return (
@@ -17,7 +19,7 @@ function CampaignsCard({campaign}) {
         </HStack>
         <HStack width={'100%'} alignItems={'center'} justifyContent={'space-between'} px={'20px'}>
             <Text fontWeight={700}>Status</Text>
-            <Text fontWeight={600} textTransform={'capitalize'} color={campaign.status === "success"? 'green.600': campaign.status === "pending"? "red.400": "red" }>{campaign.status} <Icon/></Text>
+            <Text fontWeight={600} textTransform={'capitalize'} verticalAlign={'top'} color={campaign.status === "success"? 'green.600': campaign.status === "pending"? "red.400": "red" }>{campaign.status} <Icon as={campaign.status === "success"? CiCircleCheck: campaign.status === "pending"? CiClock2: MdOutlineCancel }/></Text>
         </HStack>
         <Button colorScheme={'green'} boxShadow={'lg'}>View More</Button>
     </VStack>

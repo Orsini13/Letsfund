@@ -13,31 +13,26 @@ import {
   Drawer,
   DrawerContent,
   useDisclosure,
-  BoxProps,
-  FlexProps,
   VStack,
 } from '@chakra-ui/react'
 import {
-  FiHome,
   FiTrendingUp,
-  FiCompass,
-  FiStar,
   FiSettings,
   FiMenu,
+  FiUser,
 } from 'react-icons/fi'
-import { IconType } from 'react-icons'
-import { ReactText } from 'react'
-import Link from 'next/link';
+import { TbBrandGoogleAnalytics } from 'react-icons/tb';
+import { MdAccountCircle } from 'react-icons/md';
 
 
 const LinkItems = [
-  { name: 'Profile', icon: FiHome },
+  { name: 'Profile', icon: FiUser },
   { name: 'Campaigns', icon: FiTrendingUp },
-  { name: 'Analytics', icon: FiCompass}, 
+  { name: 'Analytics', icon: TbBrandGoogleAnalytics}, 
 ]
 const LinkItems2 = [
     { name: 'Settings', icon: FiSettings },
-    { name: 'Account', icon: FiCompass },
+    { name: 'Account', icon: MdAccountCircle },
   ]
 
 export default function SimpleSidebar({children}) {
