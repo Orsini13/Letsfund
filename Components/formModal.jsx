@@ -1,7 +1,7 @@
 import { Button, FormControl, FormLabel, HStack, Input, InputGroup, InputLeftAddon, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Textarea } from '@chakra-ui/react';
 import React from 'react'
 
-function FormModal({isOpen, onClose}) {
+function FormModal({isOpen, onClose, addCampaign}) {
     const initialRef = React.useRef(null);
     const [formValue, setFormValue] = React.useState({
         title: '',
@@ -18,6 +18,9 @@ function FormModal({isOpen, onClose}) {
         setFormValue({...formValue, [name]: value});
     } 
 
+    const handleSubmit = () => {
+        addCampaign(formValue);
+    }
     const isDateError = new Date(formValue.end) <= new Date(formValue.start);
 
   return (
@@ -68,7 +71,7 @@ function FormModal({isOpen, onClose}) {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='green' mr={3}>
+            <Button colorScheme='green' mr={3} onClick={handleSubmit}>
               Save
             </Button>
             <Button onClick={onClose}>Cancel</Button>
