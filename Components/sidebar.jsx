@@ -36,7 +36,7 @@ const LinkItems = [
   { name: 'Analytics', icon: FiCompass}, 
 ]
 const LinkItems2 = [
-    { name: 'Settings', icon: FiHome },
+    { name: 'Settings', icon: FiSettings },
     { name: 'Account', icon: FiCompass },
   ]
 
@@ -82,7 +82,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       {...rest}>
       <Flex h="40" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          <img src={logo} alt="" />
+          logo
         </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
@@ -112,7 +112,7 @@ const NavItem = ({ icon, children, ...rest }) => {
   return (
     <Box
       as="a"
-      href="#"
+      href={children.toLowerCase() === 'profile' ? '/': children.toLowerCase()}
       style={{ textDecoration: 'none' }}
       _focus={{ boxShadow: 'none' }}>
       <Flex

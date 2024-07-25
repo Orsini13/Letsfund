@@ -1,5 +1,4 @@
 import React from 'react'
-import './search.css'
 import { HStack } from '@chakra-ui/react'
 import Image from 'next/image'
 import { CiSearch } from "react-icons/ci";
