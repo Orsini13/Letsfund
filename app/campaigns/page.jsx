@@ -23,7 +23,7 @@ function Campaign() {
           <Text fontWeight={700} color={'green.900'}>OOPS!!</Text>
           <Text fontWeight={700}>You Don&apos;t Have Any Recent Campaigns </Text>
         </VStack>:
-        <HStack alignContent={'center'} wrap={'wrap'}>
+        <HStack alignContent={'center'} wrap={'wrap'} py={'20px'}>
           <CampaignsCard />
         </HStack>}
     </Box>
