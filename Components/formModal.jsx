@@ -14,10 +14,11 @@ function FormModal({isOpen, onClose}) {
 
     const handleChange = (e) => {
         const {name, value} = e.target;
+        console.log(value);
         setFormValue({...formValue, [name]: value});
     } 
 
-    const isDateError = Number(formValue.end) <= Number(formValue.start);
+    const isDateError = new Date(formValue.end) <= new Date(formValue.start);
 
   return (
     <Modal
