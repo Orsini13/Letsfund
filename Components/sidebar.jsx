@@ -43,7 +43,7 @@ const LinkItems2 = [
 export default function SimpleSidebar({children}) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
+    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')} w={'100%'}>
       <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
       <Drawer
         isOpen={isOpen}
@@ -58,10 +58,10 @@ export default function SimpleSidebar({children}) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-      <VStack ml={{ base: 0, md: 60 }} p="4" alignItems={'flex-start'}>
+      <VStack ml={{ base: 0, md: 60 }} p="4" alignItems={'flex-start'} >
         {/* Content */}
         <Search />
-        <VStack>
+        <VStack w={'100%'} pt={'20px'}>
           {children}
         </VStack>
       </VStack>
