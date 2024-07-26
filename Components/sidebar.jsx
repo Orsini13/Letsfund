@@ -13,37 +13,33 @@ import {
   Drawer,
   DrawerContent,
   useDisclosure,
-  BoxProps,
-  FlexProps,
   VStack,
 } from '@chakra-ui/react'
 import {
-  FiHome,
   FiTrendingUp,
-  FiCompass,
-  FiStar,
   FiSettings,
   FiMenu,
+  FiUser,
 } from 'react-icons/fi'
-import { IconType } from 'react-icons'
-import { ReactText } from 'react'
-import Link from 'next/link';
+import { TbBrandGoogleAnalytics } from 'react-icons/tb';
+import { MdAccountCircle } from 'react-icons/md';
+import { useRouter } from 'next/navigation';
 
 
 const LinkItems = [
-  { name: 'Profile', icon: FiHome },
+  { name: 'Profile', icon: FiUser },
   { name: 'Campaigns', icon: FiTrendingUp },
-  { name: 'Analytics', icon: FiCompass}, 
+  { name: 'Analytics', icon: TbBrandGoogleAnalytics}, 
 ]
 const LinkItems2 = [
-    { name: 'Settings', icon: FiHome },
-    { name: 'Account', icon: FiCompass },
+    { name: 'Settings', icon: FiSettings },
+    { name: 'Account', icon: MdAccountCircle },
   ]
 
 export default function SimpleSidebar({children}) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
+    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')} w={'100%'}>
       <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
       <Drawer
         isOpen={isOpen}
@@ -58,10 +54,10 @@ export default function SimpleSidebar({children}) {
       </Drawer>
       {/* mobilenav */}
       <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-      <VStack ml={{ base: 0, md: 60 }} p="4" alignItems={'flex-start'}>
+      <VStack ml={{ base: 0, md: 60 }} p="4" alignItems={'flex-start'} >
         {/* Content */}
         <Search />
-        <VStack>
+        <VStack w={'100%'} pt={'20px'}>
           {children}
         </VStack>
       </VStack>
@@ -82,7 +78,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       {...rest}>
       <Flex h="40" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          <img src={logo} alt="" />
+          logo
         </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
@@ -112,7 +108,7 @@ const NavItem = ({ icon, children, ...rest }) => {
   return (
     <Box
       as="a"
-      href="#"
+      href={children.toLowerCase() === 'profile' ? '/': children.toLowerCase()}
       style={{ textDecoration: 'none' }}
       _focus={{ boxShadow: 'none' }}>
       <Flex
@@ -122,6 +118,8 @@ const NavItem = ({ icon, children, ...rest }) => {
         borderRadius="lg"
         role="group"
         cursor="pointer"
+        // bg={currentRoute === children.toLowerCase() && 'green.400'}
+        // color={currentRoute === children.toLowerCase() && 'white'}
         _hover={{
           bg: 'green.400',
           color: 'white',
@@ -145,6 +143,8 @@ const NavItem = ({ icon, children, ...rest }) => {
 
 
 const MobileNav = ({ onOpen, ...rest }) => {
+  const router = useRouter();
+  const currentRoute = router.pathname;
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
