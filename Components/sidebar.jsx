@@ -27,10 +27,10 @@ import { useRouter } from 'next/navigation';
 
 
 const LinkItems = [
-  { name: 'Profile', icon: FiUser },
-  { name: 'Campaigns', icon: FiTrendingUp },
-  { name: 'Analytics', icon: TbBrandGoogleAnalytics}, 
-]
+  { name: "Profile", icon: FiUser },
+  { name: "Campaigns", icon: FiTrendingUp, href: "/campaigns" },
+  { name: "Analytics", icon: TbBrandGoogleAnalytics },
+];
 const LinkItems2 = [
     { name: 'Settings', icon: FiSettings },
     { name: 'Account', icon: MdAccountCircle },
@@ -47,7 +47,7 @@ export default function SimpleSidebar({children}) {
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        size="full">
+        size="xs">
         <DrawerContent>
           <SidebarContent onClose={onClose} />
         </DrawerContent>
@@ -77,8 +77,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
       h="full"
       {...rest}>
       <Flex h="40" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          logo
+        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold" >
+          Weavers
         </Text>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
@@ -151,11 +151,12 @@ const MobileNav = ({ onOpen, ...rest }) => {
       px={{ base: 4, md: 24 }}
       height="20"
       alignItems="center"
-      bg={useColorModeValue('white', 'gray.900')}
+      bg={useColorModeValue("white", "gray.900")}
       borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
+      borderBottomColor={useColorModeValue("gray.200", "gray.700")}
       justifyContent="flex-start"
-      {...rest}>
+      {...rest}
+    >
       <IconButton
         variant="outline"
         onClick={onOpen}
@@ -163,9 +164,14 @@ const MobileNav = ({ onOpen, ...rest }) => {
         icon={<FiMenu />}
       />
 
-      <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Logo
+      <Text
+        fontSize="2xl"
+        ml="8"
+        fontFamily="monospace"
+        fontWeight="bold"
+      >
+        Weavers
       </Text>
     </Flex>
-  )
+  );
 }

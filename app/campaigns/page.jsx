@@ -19,7 +19,7 @@ function Campaign() {
             <Text fontWeight={600}>let create your first campaign</Text>
           </VStack>
           <Button leftIcon={<FiPlus/>} colorScheme={'green'} boxShadow={'lg'} onClick={onOpen}>
-            Create Campaign
+            Create 
           </Button>
         </HStack>
        {campaigns.length < 1 ? <VStack w={'100%'} height={'70vh'} alignContent={'center'} justifyContent={'center'}>
