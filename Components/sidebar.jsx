@@ -27,9 +27,9 @@ import { useRouter } from 'next/navigation';
 
 
 const LinkItems = [
-  { name: "Profile", icon: FiUser },
+  // { name: "Profile", icon: FiUser },
   { name: "Campaigns", icon: FiTrendingUp, href: "/campaigns" },
-  { name: "Analytics", icon: TbBrandGoogleAnalytics },
+  // { name: "Analytics", icon: TbBrandGoogleAnalytics },
 ];
 const LinkItems2 = [
     { name: 'Settings', icon: FiSettings },
